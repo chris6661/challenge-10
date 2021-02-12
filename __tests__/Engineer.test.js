@@ -13,7 +13,7 @@ test("getRole() should return \"Engineer\"", () => {
 });
 
 test("Can get GitHub username via getGithub()", () => {
-    const testValue = "ClaireRGit"; 
+    const testValue = "ClaireRGit";
     const e = new Engineer("Claire", 50, "clairer@umbrella.org", "ClaireRGit");
-    expect(e.getGithuc()).toBe(testValue);
+    expect(e.getGithub()).toBe(testValue);
 });
