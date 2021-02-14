@@ -7,15 +7,15 @@
 
 //when you submit, you will need a link to the video showing functionality and add it to your README as well
 
-//refer to previous lessons, you needed an html js file before!!
-
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const inquirer = require("inquirer"); //install
+const path = require('path'); 
 const fs = require('fs');
+const output_dir = path.resolve(__dirname, 'dist');
+const outputPath = path.join(output_dir, 'team.html');
 const render = require('./lib/Renderhtml');
-
 const people = [];
 
 const createManager = (personInfo) => {
@@ -35,6 +35,14 @@ const createIntern = (personInfo) => {
     people.push(intern);
     loop();
 };
+
+const createTeam = () => {
+    if (!fs.existsSync(output_dir)){
+        
+        fs.mkdirSync(output_dir);
+    }fs.writeFileSync(outputPath, render(people), 'utf-8'); 
+
+}
 const getPersonInfo = () => {
     inquirer.prompt([{
             type: "input",
