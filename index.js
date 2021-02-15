@@ -6,43 +6,21 @@
 //make sure you include all relevant information asked for in the project section of module 10...you will generate an html page and css stylesheet from this to  render in a browser... end result is html and it will have all information that you added through the prompts and such
 
 //when you submit, you will need a link to the video showing functionality and add it to your README as well
-
+//variables to make file/functions work
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const inquirer = require("inquirer"); //install
-const path = require('path'); 
+const path = require('path');
 const fs = require('fs');
+//variables for function outside of file and paths to get there
 const output_dir = path.resolve(__dirname, 'dist');
 const outputPath = path.join(output_dir, 'team.html');
+//render the html file with entered information
 const render = require('./lib/Renderhtml');
+//variables for creating my team html file
 const people = [];
 
-const createManager = (personInfo) => {
-    const manager = new Manager(personInfo.managername, personInfo.managerid, personInfo.manageremail, personInfo.manageroffice);
-    people.push(manager);
-    loop();
-};
-
-const createEngineer = (personInfo) => {
-    const engineer = new Engineer(personInfo.engineername, personInfo.engineerid, personInfo.engineeremail, personInfo.engineergit);
-    people.push(engineer);
-    loop();
-};
-
-const createIntern = (personInfo) => {
-    const intern = new Intern(personInfo.internname, personInfo.internid, personInfo.internemail, personInfo.internschool)
-    people.push(intern);
-    loop();
-};
-
-const createTeam = () => {
-    if (!fs.existsSync(output_dir)){
-        
-        fs.mkdirSync(output_dir);
-    }fs.writeFileSync(outputPath, render(people), 'utf-8'); 
-
-}
 const getPersonInfo = () => {
     inquirer.prompt([{
             type: "input",
@@ -93,6 +71,33 @@ const getPersonInfo = () => {
         createManager(managerInfo)
     ])
 };
+
+const createManager = (personInfo) => {
+    const manager = new Manager(personInfo.managername, personInfo.managerid, personInfo.manageremail, personInfo.manageroffice);
+    people.push(manager);
+    loop();
+};
+
+const createEngineer = (personInfo) => {
+    const engineer = new Engineer(personInfo.engineername, personInfo.engineerid, personInfo.engineeremail, personInfo.engineergit);
+    people.push(engineer);
+    loop();
+};
+
+const createIntern = (personInfo) => {
+    const intern = new Intern(personInfo.internname, personInfo.internid, personInfo.internemail, personInfo.internschool)
+    people.push(intern);
+    loop();
+};
+
+const createTeam = () => {
+    if (!fs.existsSync(output_dir)) {
+
+        fs.mkdirSync(output_dir);
+    }
+    fs.writeFileSync(outputPath, render(people), 'utf-8');
+
+}
 
 const getEngineerInfo = () => {
     inquirer.prompt([{
@@ -223,5 +228,6 @@ const loop = () => {
             }
         })
 };
+
 
 getPersonInfo();
