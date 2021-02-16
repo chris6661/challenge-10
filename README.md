@@ -18,3 +18,6 @@ To run this application, run: node index.js through the command line.
  * Bootstrap
  
  ![](assets/media/challenge10screenshot.png)
+
+## Video demonstration can be found here. 
+https://github.com/chris6661/challenge-10/blob/main/assets/media/Untitled_%20Feb%2015%2C%202021%207_45%20PM.mp4
