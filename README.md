@@ -16,3 +16,5 @@ To run this application, run: node index.js through the command line.
  * Node.js
  * Inquirer
  * Bootstrap
+ 
+ ![](assets/media/challenge10screenshot.png)
